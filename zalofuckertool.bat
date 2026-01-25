@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 >nul
 color 0B
-title Zalofucker Tool
+title Zalofucker Toolbox
 
 net session >nul 2>&1
 if %errorLevel% neq 0 (
@@ -319,7 +319,8 @@ echo.
 echo 🔧 HƯỚNG DẪN KHẮC PHỤC:
 echo.
 echo   ► Bước 1: Kiểm tra kết nối Internet
-echo      - Mở trình duyệt và thử truy cập: example.com
+echo      - Mở trình duyệt và thử truy cập: https://example.com
+echo      - Mở trình duyệt và thử truy cập: https://www.githubstatus.com/
 echo.
 echo   ► Bước 2: Kiểm tra curl có hoạt động không
 echo      - Mở CMD và gõ: curl --version
@@ -334,9 +335,9 @@ echo      - Gửi mail đến: luxediro.mahideo@collector.org
 echo      - Tạo ticket trên Github: https://github.com/zalofucker/issues-tracker/issues
 echo.
 echo ========================================================
-set /p openhelp="Bạn có muốn mở trang Q/A không? (Y/N): "
+set /p openhelp="Bạn có muốn mở trang báo lỗi không không? (Y/N): "
 if /i "%openhelp%"=="Y" (
-    start https://github.com/zalofucker
+    start https://github.com/zalofucker/issues-tracker/issues
     echo Đã mở trang hỗ trợ trong trình duyệt!
 )
 exit /b
@@ -352,4 +353,5 @@ echo.
 echo Cảm ơn bạn đã sử dụng công cụ!
 echo Fuck you Zalo
 timeout /t 2 >nul
+
 exit
