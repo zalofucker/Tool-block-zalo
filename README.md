@@ -7,6 +7,11 @@
 Bước 1 : Vào liên kết [này](https://github.com/zalofucker/Tool-block-zalo/releases) và tải tập tin theo hệ điều hành của bạn
 
 Bước 2 : Mở bằng cách chuột đúp vào tệp tin
+**Với MacOS và Linux, bạn có thể thử chạy lệnh sau**
+```
+sudo chmod +x (tệp tin zalofucker_Toolbox)
+sudo ./(tệp tin zalofucker_Toolbox)
+```
 > ⚠ BẠN PHẢI CÓ QUYỀN ADMIN ĐỂ SỬ DỤNG
 
 Bước 3 : Chọn theo thứ tự theo bạn muốn
