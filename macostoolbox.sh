@@ -7,10 +7,10 @@ NC='\033[0m'
 HOSTS_FILE="/etc/hosts"
 BACKUP_FILE="/etc/hosts.backup"
 TEMP_DIR="/tmp/website_blocker"
-ZALO_FILTER_URL="https://your-domain.com/filters/zalo.txt"
-ZALOPAY_FILTER_URL="https://your-domain.com/filters/zalopay.txt"
-ZINGMP3_FILTER_URL="https://your-domain.com/filters/zingmp3.txt"
-LABANKEY_FILTER_URL="https://your-domain.com/filters/labankey.txt"
+ZALO_FILTER_URL="https://raw.githubusercontent.com/zalofucker/fuck-you-zalo/refs/heads/main/adaway.txt"
+ZALOPAY_FILTER_URL="https://raw.githubusercontent.com/zalofucker/fuck-you-zalopay/refs/heads/main/adaway.txt"
+ZINGMP3_FILTER_URL="https://raw.githubusercontent.com/zalofucker/fuck-you-zingmp3/refs/heads/main/adaway.txt"
+LABANKEY_FILTER_URL="https://raw.githubusercontent.com/zalofucker/fuck-you-labankey/refs/heads/main/adaway.txt"
 mkdir -p "$TEMP_DIR"
 
 show_banner() {
