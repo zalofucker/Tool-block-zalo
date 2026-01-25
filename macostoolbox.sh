@@ -32,9 +32,9 @@ show_menu() {
     echo "6. Khôi phục file hosts cũ"
     echo "7. Mở file hosts"
     echo "8. Kiểm tra trạng thái chặn"
-    echo "9. Thoát"
+    echo "0. Thoát"
     echo ""
-    echo -n "Nhập lựa chọn [1-9]: "
+    echo -n "Nhập lựa chọn [0-8]: "
 }
 
 backup_hosts() {
@@ -78,7 +78,7 @@ download_filter() {
         echo "🔧 HƯỚNG DẪN KHẮC PHỤC:"
         echo ""
         echo "  ► Bước 1: Kiểm tra kết nối Internet"
-        echo "     - Mở trình duyệt và thử truy cập: https://example.com"
+        echo "     - Mở trình duyệt và thử truy cập: https://githubstatus.com kiểm tra xem có đang sập không"
         echo "     - Hoặc ping: ping -c 3 1.1.1.1"
         echo ""
         echo "  ► Bước 2: Kiểm tra curl có hoạt động không"
@@ -90,7 +90,7 @@ download_filter() {
         echo "     - Hoặc thử: sudo pfctl -d"
         echo ""
         echo "  ► Bước 5: Liên hệ hỗ trợ"
-        echo "     - Gửi mail đến: saygex@mail.eu"
+        echo "     - Gửi mail đến: luxediro.madiheo@collector.org"
         echo "     - Tạo ticket trên Github: https://github.com/zalofucker/issues-tracker/issues"
         echo ""
         echo "========================================================"
@@ -98,7 +98,6 @@ download_filter() {
     fi
 }
 
-# Hàm áp dụng filter vào hosts
 apply_filter() {
     local filter_file=$1
     local name=$2
@@ -125,7 +124,7 @@ apply_filter() {
         echo "     - Xem có file $name.txt không"
         echo ""
         echo "  ► Bước 3: Khởi động lại script"
-        echo "     - Thoát script và chạy lại: sudo ./website_blocker.sh"
+        echo "     - Thoát script và chạy lại với quyền sudo: sudo ./website_blocker.sh"
         echo ""
         echo "========================================================"
         return 1
@@ -192,7 +191,6 @@ apply_filter() {
     fi
 }
 
-# Hàm chặn một trang web
 block_website() {
     local url=$1
     local name=$2
@@ -206,7 +204,6 @@ block_website() {
     fi
 }
 
-# Hàm chặn tất cả
 block_all() {
     echo -e "${BRIGHT_BLUE}=== CHẶN TẤT CẢ ===${NC}"
     
@@ -214,12 +211,11 @@ block_all() {
     local success_count=0
     local fail_count=0
     local combined_file="$TEMP_DIR/combined.txt"
-    
-    # Xóa file kết hợp cũ
+  
     rm -f "$combined_file"
     touch "$combined_file"
     
-    # Tải tất cả các filter
+  
     for filter in "${filters[@]}"; do
         IFS=':' read -r name url <<< "$filter"
         
@@ -233,8 +229,10 @@ block_all() {
             echo -e "${CYAN}⚠ Bỏ qua filter $name do lỗi tải${NC}"
         fi
     done
+
+
     
-    # Kiểm tra kết quả
+    
     if [ $success_count -eq 0 ]; then
         echo -e "${BLUE}✗ Không tải được filter nào. Hủy bỏ thao tác.${NC}"
         return 1
@@ -242,7 +240,7 @@ block_all() {
     
     echo -e "${BRIGHT_BLUE}Kết quả: $success_count thành công, $fail_count thất bại${NC}"
     
-    # Áp dụng file kết hợp
+    
     if [ -s "$combined_file" ]; then
         apply_filter "$combined_file" "TẤT CẢ"
         return $?
@@ -252,7 +250,7 @@ block_all() {
     fi
 }
 
-# Hàm khôi phục hosts
+
 restore_hosts() {
     if [ -f "$BACKUP_FILE" ]; then
         echo -e "${CYAN}Đang khôi phục file hosts...${NC}"
@@ -273,9 +271,9 @@ restore_hosts() {
     fi
 }
 
-# Hàm mở file hosts
+
 open_hosts() {
-    echo -e "${CYAN}Đang mở file hosts bằng editor mặc định...${NC}"
+    echo -e "${CYAN}Đang mở file hosts bằng nano...${NC}"
     sudo nano "$HOSTS_FILE"
 }
 
@@ -292,10 +290,11 @@ check_ping() {
         return 0
     else
         echo -e "${BLUE}✗ $domain vẫn phản hồi (chưa bị chặn)${NC}"
-        echo -n "Bạn có muốn truy cập trang hướng dẫn? (y/n): "
+        echo -e "Bạn có thể thử chạy lại"
+        echo -n "Bạn có muốn truy cập trang báo lỗi? (y/n): "
         read answer
         if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
-            open "https://your-website.com/help"
+            open "https://github.com/zalofucker/issues-tracker/issues"
         fi
         return 1
     fi
@@ -345,9 +344,7 @@ check_sudo() {
     fi
 }
 
-# Hàm main
 main() {
-    # Kiểm tra quyền sudo ngay từ đầu (trừ option 7 - mở file hosts)
     if [ "$1" != "7" ]; then
         check_sudo "$@"
     fi
@@ -396,6 +393,4 @@ main() {
         read
     done
 }
-
-# Chạy chương trình
 main "$@"
