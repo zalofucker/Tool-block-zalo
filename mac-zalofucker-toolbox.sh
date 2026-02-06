@@ -91,7 +91,7 @@ download_filter() {
         echo ""
         echo "  ► Bước 5: Liên hệ hỗ trợ"
         echo "     - Gửi mail đến: luxediro.madiheo@collector.org"
-        echo "     - Tạo ticket trên Github: https://github.com/zalofucker/issues-tracker/issues"
+        echo "     - Tạo ticket trên Github: https://github.com/orgs/zalofucker/discussions"
         echo ""
         echo "========================================================"
         return 1
@@ -184,7 +184,7 @@ apply_filter() {
         echo ""
         echo "  ► Bước 6: Liên hệ hỗ trợ"
         echo "     - Gửi mail đến: luxediro.mahideo@collector.org"
-        echo "     - Tạo ticket: https://github.com/zalofucker/issues-tracker/issues"
+        echo "     - Tạo ticket: https://github.com/orgs/zalofucker/discussions"
         echo ""
         echo "========================================================"
         return 1
@@ -294,7 +294,7 @@ check_ping() {
         echo -n "Bạn có muốn truy cập trang báo lỗi? (y/n): "
         read answer
         if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
-            open "https://github.com/zalofucker/issues-tracker/issues"
+            open "https://github.com/orgs/zalofucker/discussions"
         fi
         return 1
     fi
