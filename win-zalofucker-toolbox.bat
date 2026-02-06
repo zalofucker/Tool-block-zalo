@@ -264,7 +264,7 @@ if %errorLevel% neq 0 (
     echo.
     set /p opensite="Bạn có muốn mở trang web hỗ trợ không? (Y/N): "
     if /i "!opensite!"=="Y" (
-        start https://github.com/zalofucker
+        start https://github.com/orgs/zalofucker/discussions
     )
 )
 exit /b
@@ -332,7 +332,7 @@ echo      - Bạn có thể tham khảo: https://4get.ca/web?s=how%20to%20disabl
 echo.
 echo   ► Bước 5: Liên hệ hỗ trợ
 echo      - Gửi mail đến: luxediro.mahideo@collector.org
-echo      - Tạo ticket trên Github: https://github.com/zalofucker/issues-tracker/issues
+echo      - Tạo ticket trên Github: https://github.com/orgs/zalofucker/discussions
 echo.
 echo ========================================================
 set /p openhelp="Bạn có muốn mở trang báo lỗi không không? (Y/N): "
@@ -355,3 +355,4 @@ echo Fuck you Zalo
 timeout /t 2 >nul
 
 exit
+
