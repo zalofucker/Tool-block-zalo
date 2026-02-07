@@ -25,21 +25,23 @@ echo  [1] Chặn Zalo
 echo  [2] Chặn ZaloPay
 echo  [3] Chặn ZingMP3
 echo  [4] Chặn Labankey
-echo  [5] Chặn TẤT CẢ
-echo  [6] Gỡ chặn (Khôi phục hosts về mặc định)
-echo  [7] Mở file host
+echo  [5] Chặn Kiki
+echo  [6] Chặn TẤT CẢ
+echo  [7] Gỡ chặn (Khôi phục hosts về mặc định)
+echo  [8] Mở file host
 echo  [0] Thoát
 echo.
 echo ========================================================
-set /p choice="Nhập lựa chọn của bạn (0-7): "
+set /p choice="Nhập lựa chọn của bạn (0-8): "
 
 if "%choice%"=="1" goto BLOCK_ZALO
 if "%choice%"=="2" goto BLOCK_ZALOPAY
 if "%choice%"=="3" goto BLOCK_ZINGMP3
 if "%choice%"=="4" goto BLOCK_LABANKEY
-if "%choice%"=="5" goto BLOCK_ALL
-if "%choice%"=="6" goto UNBLOCK
-if "%choice%"=="7" goto OPEN_HOSTS
+if "%choice%"=="5" goto BLOCK_KIKI
+if "%choice%"=="6" goto BLOCK_ALL
+if "%choice%"=="7" goto UNBLOCK
+if "%choice%"=="8" goto OPEN_HOSTS
 if "%choice%"=="0" goto EXIT
 goto MENU
 
@@ -85,6 +87,22 @@ if exist "%TEMP_FILE%" (
 )
 goto END_OPERATION
 
+
+:BLOCK_KIKI
+echo.
+echo Đang tải danh sách chặn Kiki...
+set "URL_KIKI=https://raw.githubusercontent.com/zalofucker/fuck-you-kiki/refs/heads/main/windows.txt"
+set "TEMP_FILE=%TEMP%\block_kiki.txt"
+curl -s -o "%TEMP_FILE%" "%URL_KIKI%"
+if exist "%TEMP_FILE%" (
+    call :APPLY_HOSTS "%TEMP_FILE%"
+    call :CHECK_BLOCK "kiki.zalo.ai" "Kiki"
+) else (
+    call :SHOW_ERROR_GUIDE
+)
+goto END_OPERATION
+
+
 :BLOCK_LABANKEY
 echo.
 echo Đang tải danh sách chặn Labankey...
@@ -109,25 +127,28 @@ echo.
 set "URL_ZALO=https://raw.githubusercontent.com/zalofucker/fuck-you-zalo/refs/heads/main/windows.txt"
 set "URL_ZALOPAY=https://raw.githubusercontent.com/zalofucker/fuck-you-zalopay/refs/heads/main/windows.txt"
 set "URL_ZINGMP3=https://raw.githubusercontent.com/zalofucker/fuck-you-zingmp3/refs/heads/main/windows.txt"
+set "URL_KIKI=https://raw.githubusercontent.com/zalofucker/fuck-you-kiki/refs/heads/main/windows.txt"
 set "URL_LABANKEY=https://raw.githubusercontent.com/zalofucker/fuck-you-labankey/refs/heads/main/windows.txt"
 
 set "TEMP_ALL=%TEMP%\block_all.txt"
 set "TEMP_ZALO=%TEMP%\temp_zalo.txt"
 set "TEMP_ZALOPAY=%TEMP%\temp_zalopay.txt"
 set "TEMP_ZINGMP3=%TEMP%\temp_zingmp3.txt"
+set "TEMP_KIKI=%TEMP%\temp_kiki.txt"
 set "TEMP_LABANKEY=%TEMP%\temp_labankey.txt"
 
 if exist "%TEMP_ALL%" del "%TEMP_ALL%"
 if exist "%TEMP_ZALO%" del "%TEMP_ZALO%"
 if exist "%TEMP_ZALOPAY%" del "%TEMP_ZALOPAY%"
 if exist "%TEMP_ZINGMP3%" del "%TEMP_ZINGMP3%"
+if exist "%TEMP_KIKI%" del "%TEMP_KIKI%"
 if exist "%TEMP_LABANKEY%" del "%TEMP_LABANKEY%"
 
 set SUCCESS_COUNT=0
 set FAIL_COUNT=0
 set FAIL_LIST=
 
-echo [1/4] Đang tải Zalo...
+echo [1/5] Đang tải Zalo...
 curl -s -o "%TEMP_ZALO%" "%URL_ZALO%"
 if exist "%TEMP_ZALO%" (
     type "%TEMP_ZALO%" >> "%TEMP_ALL%"
@@ -139,7 +160,7 @@ if exist "%TEMP_ZALO%" (
     set FAIL_LIST=!FAIL_LIST! Zalo,
 )
 
-echo [2/4] Đang tải ZaloPay...
+echo [2/5] Đang tải ZaloPay...
 curl -s -o "%TEMP_ZALOPAY%" "%URL_ZALOPAY%"
 if exist "%TEMP_ZALOPAY%" (
     type "%TEMP_ZALOPAY%" >> "%TEMP_ALL%"
@@ -151,7 +172,7 @@ if exist "%TEMP_ZALOPAY%" (
     set FAIL_LIST=!FAIL_LIST! ZaloPay,
 )
 
-echo [3/4] Đang tải ZingMP3...
+echo [3/5] Đang tải ZingMP3...
 curl -s -o "%TEMP_ZINGMP3%" "%URL_ZINGMP3%"
 if exist "%TEMP_ZINGMP3%" (
     type "%TEMP_ZINGMP3%" >> "%TEMP_ALL%"
@@ -163,7 +184,19 @@ if exist "%TEMP_ZINGMP3%" (
     set FAIL_LIST=!FAIL_LIST! ZingMP3,
 )
 
-echo [4/4] Đang tải Labankey...
+echo [4/5] Đang tải Kiki...
+curl -s -o "%TEMP_KIKI%" "%URL_KIKI%"
+if exist "%TEMP_KIKI%" (
+    type "%TEMP_KIKI%" >> "%TEMP_ALL%"
+    echo       [✓] Thành công
+    set /a SUCCESS_COUNT+=1
+) else (
+    echo       [✗] Thất bại
+    set /a FAIL_COUNT+=1
+    set FAIL_LIST=!FAIL_LIST! ZingMP3,
+)
+
+echo [5/5] Đang tải Labankey...
 curl -s -o "%TEMP_LABANKEY%" "%URL_LABANKEY%"
 if exist "%TEMP_LABANKEY%" (
     type "%TEMP_LABANKEY%" >> "%TEMP_ALL%"
@@ -179,8 +212,8 @@ echo.
 echo ========================================================
 echo  KẾT QUẢ TẢI FILE
 echo ========================================================
-echo  Thành công: %SUCCESS_COUNT%/4
-echo  Thất bại: %FAIL_COUNT%/4
+echo  Thành công: %SUCCESS_COUNT%/5
+echo  Thất bại: %FAIL_COUNT%/5
 
 if %FAIL_COUNT% gtr 0 (
     echo  Các file lỗi:%FAIL_LIST:~0,-1%
@@ -197,6 +230,7 @@ if %SUCCESS_COUNT% gtr 0 (
         call :CHECK_BLOCK "zalo.me" "Zalo"
         call :CHECK_BLOCK "zalopay.vn" "ZaloPay"
         call :CHECK_BLOCK "zingmp3.vn" "ZingMP3"
+        call :CHECK_BLOCK "kiki.zalo.ai" "Kiki"
         call :CHECK_BLOCK "labankey.com" "Labankey"
     )
     
@@ -218,6 +252,7 @@ if %SUCCESS_COUNT% gtr 0 (
 if exist "%TEMP_ZALO%" del "%TEMP_ZALO%"
 if exist "%TEMP_ZALOPAY%" del "%TEMP_ZALOPAY%"
 if exist "%TEMP_ZINGMP3%" del "%TEMP_ZINGMP3%"
+if exist "%TEMP_KIKI%" del "%TEMP_KIKI%"
 if exist "%TEMP_LABANKEY%" del "%TEMP_LABANKEY%"
 
 goto END_OPERATION
@@ -230,6 +265,7 @@ if exist "%TEMP_ALL%" (
     call :CHECK_BLOCK "zalo.me" "Zalo"
     call :CHECK_BLOCK "zalopay.vn" "ZaloPay"
     call :CHECK_BLOCK "zingmp3.vn" "ZingMP3"
+    call :CHECK_BLOCK "kiki.zalo.ai" "Kiki"
     call :CHECK_BLOCK "labankey.com" "Labankey"
 ) else (
     echo Không thể tải các file chặn!
@@ -355,4 +391,5 @@ echo Fuck you Zalo
 timeout /t 2 >nul
 
 exit
+
 
