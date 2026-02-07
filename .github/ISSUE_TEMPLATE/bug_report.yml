@@ -37,7 +37,6 @@ body:
         - label: MacOS
         - label: Linux
         - label: Cả 3
-      required: true
 
   - type: textarea
     id: version
