@@ -10,6 +10,7 @@ TEMP_DIR="/tmp/website_blocker"
 ZALO_FILTER_URL="https://raw.githubusercontent.com/zalofucker/fuck-you-zalo/refs/heads/main/adaway.txt"
 ZALOPAY_FILTER_URL="https://raw.githubusercontent.com/zalofucker/fuck-you-zalopay/refs/heads/main/adaway.txt"
 ZINGMP3_FILTER_URL="https://raw.githubusercontent.com/zalofucker/fuck-you-zingmp3/refs/heads/main/adaway.txt"
+KIKI_FILTER_URL="https://raw.githubusercontent.com/zalofucker/fuck-you-kiki/refs/heads/main/adaway.txt"
 LABANKEY_FILTER_URL="https://raw.githubusercontent.com/zalofucker/fuck-you-labankey/refs/heads/main/adaway.txt"
 mkdir -p "$TEMP_DIR"
 
@@ -27,14 +28,15 @@ show_menu() {
     echo "1. Chặn Zalo"
     echo "2. Chặn ZaloPay"
     echo "3. Chặn ZingMP3"
-    echo "4. Chặn Labankey"
-    echo "5. Chặn TẤT CẢ"
-    echo "6. Khôi phục file hosts cũ"
-    echo "7. Mở file hosts"
-    echo "8. Kiểm tra trạng thái chặn"
+    echo "4. Chặn Kiki"
+    echo "5. Chặn Labankey"
+    echo "6. Chặn TẤT CẢ"
+    echo "7. Khôi phục file hosts cũ"
+    echo "8. Mở file hosts"
+    echo "9. Kiểm tra trạng thái chặn"
     echo "0. Thoát"
     echo ""
-    echo -n "Nhập lựa chọn [0-8]: "
+    echo -n "Nhập lựa chọn [0-9]: "
 }
 
 backup_hosts() {
@@ -94,7 +96,24 @@ download_filter() {
         echo "     - Tạo ticket trên Github: https://github.com/orgs/zalofucker/discussions"
         echo ""
         echo "========================================================"
-        return 1
+        echo ""
+        # Hỏi người dùng có muốn mở trang hỗ trợ không
+        while true; do
+            read -p "Bạn có muốn mở trang hỗ trợ trên Github? (Y/N): " choice
+            case "$choice" in
+                [Yy]* )
+                    echo "Đang mở trang hỗ trợ..."
+                    open "https://github.com/orgs/zalofucker/discussions"
+                    return 1
+                    ;;
+                [Nn]* )
+                    return 1
+                    ;;
+                * )
+                    echo "Vui lòng chọn Y hoặc N"
+                    ;;
+            esac
+        done
     fi
 }
 
@@ -120,14 +139,33 @@ apply_filter() {
         echo "     - Hoặc chọn 'Chặn tất cả' để tải lại toàn bộ"
         echo ""
         echo "  ► Bước 2: Kiểm tra thư mục tạm"
-        echo "     - Chạy lệnh: ls -la /tmp/website_blocker/"
+        echo "     - Chạy lệnh: ls -la /tmp/mac-zalofucker-toolbox/"
         echo "     - Xem có file $name.txt không"
         echo ""
         echo "  ► Bước 3: Khởi động lại script"
-        echo "     - Thoát script và chạy lại với quyền sudo: sudo ./website_blocker.sh"
+        echo "     - Thoát script và chạy lại với quyền sudo: sudo ./mac-zalofucker-toolbox.sh"
+        echo ""
+        echo "  ► Bước 4: Liên hệ hỗ trợ"
+        echo "     - Gửi mail đến: luxediro.madiheo@collector.org"
+        echo "     - Tạo ticket trên Github: https://github.com/orgs/zalofucker/discussions"
         echo ""
         echo "========================================================"
-        return 1
+        while true; do
+            read -p "Bạn có muốn mở trang hỗ trợ trên Github? (Y/N): " choice
+            case "$choice" in
+                [Yy]* )
+                    echo "Đang mở trang hỗ trợ..."
+                    open "https://github.com/orgs/zalofucker/discussions"
+                    return 1
+                    ;;
+                [Nn]* )
+                    return 1
+                    ;;
+                * )
+                    echo "Vui lòng chọn Y hoặc N"
+                    ;;
+            esac
+        done
     fi
     
     echo -e "${CYAN}Đang áp dụng filter $name vào hosts...${NC}"
@@ -167,8 +205,8 @@ apply_filter() {
         echo "🔧 HƯỚNG DẪN KHẮC PHỤC:"
         echo ""
         echo "  ► Bước 1: Kiểm tra quyền sudo"
-        echo "     - Chạy script với sudo: sudo ./website_blocker.sh"
-        echo "     - Nhập mật khẩu quản trị khi được yêu cầu"
+        echo "     - Chạy script với sudo: sudo ./mac-zalofucker-toolbox.sh"
+        echo "     - Nhập mật khẩu quản trị (sudo) khi được yêu cầu"
         echo ""
         echo "  ► Bước 2: Kiểm tra quyền file hosts"
         echo "     - Chạy lệnh: ls -l /etc/hosts"
@@ -187,7 +225,23 @@ apply_filter() {
         echo "     - Tạo ticket: https://github.com/orgs/zalofucker/discussions"
         echo ""
         echo "========================================================"
-        return 1
+        echo ""
+        while true; do
+            read -p "Bạn có muốn mở trang hỗ trợ trên Github? (Y/N): " choice
+            case "$choice" in
+                [Yy]* )
+                    echo "Đang mở trang hỗ trợ..."
+                    open "https://github.com/orgs/zalofucker/discussions"
+                    return 1
+                    ;;
+                [Nn]* )
+                    return 1
+                    ;;
+                * )
+                    echo "Vui lòng chọn Y hoặc N"
+                    ;;
+            esac
+        done
     fi
 }
 
@@ -207,7 +261,7 @@ block_website() {
 block_all() {
     echo -e "${BRIGHT_BLUE}=== CHẶN TẤT CẢ ===${NC}"
     
-    local filters=("ZALO:$ZALO_FILTER_URL" "ZALOPAY:$ZALOPAY_FILTER_URL" "ZINGMP3:$ZINGMP3_FILTER_URL" "LABANKEY:$LABANKEY_FILTER_URL")
+    local filters=("ZALO:$ZALO_FILTER_URL" "ZALOPAY:$ZALOPAY_FILTER_URL" "ZINGMP3:$ZINGMP3_FILTER_URL" "LABANKEY:$LABANKEY_FILTER_URL" "KIKI:$KIKI_FILTER_URL")
     local success_count=0
     local fail_count=0
     local combined_file="$TEMP_DIR/combined.txt"
@@ -304,7 +358,7 @@ check_ping() {
 check_status() {
     echo -e "${BRIGHT_BLUE}=== KIỂM TRA TRẠNG THÁI CHẶN ===${NC}"
     
-    local domains=("zalo.me" "zalopay.vn" "zingmp3.vn" "labankey.com")
+    local domains=("zalo.me" "zalopay.vn" "zingmp3.vn" "labankey.com" "kiki.zalo.ai")
     
     for domain in "${domains[@]}"; do
         check_ping "$domain"
@@ -365,22 +419,26 @@ main() {
                 block_website "$ZINGMP3_FILTER_URL" "ZINGMP3"
                 ;;
             4)
-                block_website "$LABANKEY_FILTER_URL" "LABANKEY"
+                block_website "$KIKI_FILTER_URL" "KIKI"
                 ;;
             5)
-                block_all
+                block_website "$LABANKEY_FILTER_URL" "LABANKEY"
                 ;;
             6)
-                restore_hosts
+                block_all
                 ;;
             7)
-                open_hosts
+                restore_hosts
                 ;;
             8)
-                check_status
+                open_hosts
                 ;;
             9)
+                check_status
+                ;;
+            0)
                 echo -e "${BRIGHT_BLUE}Tạm biệt!${NC}"
+                echo -e "${BRIGHT_BLUE}Fuck you Zalo${NC}"
                 exit 0
                 ;;
             *)
