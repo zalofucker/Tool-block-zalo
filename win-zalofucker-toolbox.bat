@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 >nul
 color 0B
-title Zalofucker Toolbox
+title Zalofucker Toolbox version 0.0.4
 
 net session >nul 2>&1
 if %errorLevel% neq 0 (
@@ -20,6 +20,7 @@ cls
 echo ========================================================
 echo            Zalofucker Toolbox
 echo ========================================================
+echo Version 0.0.4
 echo.
 echo  [1] Chặn Zalo
 echo  [2] Chặn ZaloPay
@@ -391,5 +392,6 @@ echo Fuck you Zalo
 timeout /t 2 >nul
 
 exit
+
 
 
