@@ -1,0 +1,60 @@
+name: Báo cáo lỗi ứng dụng
+description: Báo cáo ứng dụng bị dở người
+title: "[App]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Cảm ơn bạn đã đóng góp! Vui lòng điền vào các mục bên dưới.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Các bước kiểm tra
+      description: Vui lòng đánh dấu vào các ô bên dưới để xác nhận.
+      options:
+        - label: Bạn đã chắc chắn rằng vấn đề của bạn không bị lặp?
+          required: true
+        - label: Bạn đã cập nhật lên theo release mới nhất?
+          required: true
+        - label: Bạn đã khởi động lại thiết bị?
+          required: true
+        - label: Máy bạn hoàn toàn bình thường?
+          required: true
+        - label: Bạn không dùng BKAV?
+          required: true
+        - label: Bạn đã chạy sudo cho nó?
+          required: true
+
+  - type: checkboxes
+    id: oschecks
+    attributes:
+      label: Hệ điều hành
+      description: Vui lòng chọn hệ điều hành bạn muốn báo lỗi
+      options:
+        - label: Windows
+        - label: MacOS
+        - label: Linux
+        - label: Cả 3
+      required: true
+
+  - type: textarea
+    id: version
+    attributes:
+      label: Tên phiên bản
+      description: Phiên bản bạn muốn báo lỗi là
+      placeholder: |
+        Bạn tải trong release bao nhiêu thì gõ vào
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Mô tả tên lỗi
+      description: Vui lòng mô tả chi tiết vấn đề.
+      placeholder: |
+        Ví dụ: Ứng dụng bị crash, Không áp dụng được bộ lọc, Đánh nhau, Ăn lẫn nhau
+    validations:
+      required: true
