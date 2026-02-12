@@ -1,16 +1,23 @@
-# Tool-block-zalo
+<img width="1113" height="626" alt="image" src="https://github.com/user-attachments/assets/d2e86c71-0580-4bd4-b00a-c581921d3536" /># Tool-block-zalo
 **Ứng dụng giúp bạn chặn Zalo và những thứ khác một cách dễ dàng hơn**
 # 🔧 Cơ chế
 Ứng dụng sau khi tải về sẽ tự động tải file host theo các nguồn trong zalofucker và áp dụng vào trong tập tin host của mỗi hệ điều hành, có sao lưu và khôi phục
 # 📚 Cách dùng 
-Bước 1 : Vào liên kết [này](https://github.com/zalofucker/Tool-block-zalo/releases) và tải tập tin theo hệ điều hành của bạn
+Bước 1 : Nhìn HDH ta thấy
 
-Bước 2 : Mở bằng cách chuột đúp vào tệp tin
-
-**Với MacOS và Linux, bạn có thể thử chạy lệnh sau**
+🐧 
 ```
-sudo chmod +x (tệp tin zalofucker_Toolbox)
-sudo ./(tệp tin zalofucker_Toolbox)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/zalofucker/tool-block-zalo/refs/heads/main/linux-zalofucker-toolbox.sh)
+```
+
+🍎
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/zalofucker/tool-block-zalo/refs/heads/main/linux-zalofucker-toolbox.sh)
+```
+
+🍃
+```
+curl -fsSL https://raw.githubusercontent.com/zalofucker/tool-block-zalo/refs/heads/main/linux-zalofucker-toolbox.sh
 ```
 > ⚠ BẠN PHẢI CÓ QUYỀN ADMIN ĐỂ SỬ DỤNG
 
