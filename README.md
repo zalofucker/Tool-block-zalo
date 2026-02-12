@@ -1,6 +1,5 @@
 # Tool-block-zalo
 **Ứng dụng giúp bạn chặn Zalo và những thứ khác một cách dễ dàng hơn**
->⚠ HIỆN TẠI ỨNG DỤNG CHỈ HỖ TRỢ WINDOWS VÀ MACOS DO THIẾU NGUỒN LỰC
 # 🔧 Cơ chế
 Ứng dụng sau khi tải về sẽ tự động tải file host theo các nguồn trong zalofucker và áp dụng vào trong tập tin host của mỗi hệ điều hành, có sao lưu và khôi phục
 # 📚 Cách dùng 
