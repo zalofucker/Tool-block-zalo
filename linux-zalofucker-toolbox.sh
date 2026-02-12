@@ -180,26 +180,6 @@ apply_filter() {
     
     if [ $? -eq 0 ]; then
         echo -e "${BRIGHT_BLUE}✓ Đã áp dụng filter $name${NC}"
-        
-        # deo hieu
-        echo -e "${CYAN}Đang làm mới DNS cache...${NC}"
-        
-        # deo hieu
-        if command -v systemd-resolve &> /dev/null; then
-            sudo systemd-resolve --flush-caches > /dev/null 2>&1
-        elif command -v resolvectl &> /dev/null; then
-            sudo resolvectl flush-caches > /dev/null 2>&1
-        elif [ -f /etc/init.d/nscd ]; then
-            sudo /etc/init.d/nscd restart > /dev/null 2>&1
-        elif [ -f /etc/init.d/dnsmasq ]; then
-            sudo /etc/init.d/dnsmasq restart > /dev/null 2>&1
-        else
-             # udk
-            sudo service network-manager restart > /dev/null 2>&1 || true
-        fi
-        
-        echo -e "${BRIGHT_BLUE}✓ Đã làm mới DNS cache${NC}"
-        return 0
     else
         echo ""
         echo "========================================================"
