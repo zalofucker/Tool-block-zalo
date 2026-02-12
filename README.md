@@ -1,4 +1,4 @@
-<img width="1113" height="626" alt="image" src="https://github.com/user-attachments/assets/d2e86c71-0580-4bd4-b00a-c581921d3536" /># Tool-block-zalo
+# Tool-block-zalo
 **Ứng dụng giúp bạn chặn Zalo và những thứ khác một cách dễ dàng hơn**
 # 🔧 Cơ chế
 Ứng dụng sau khi tải về sẽ tự động tải file host theo các nguồn trong zalofucker và áp dụng vào trong tập tin host của mỗi hệ điều hành, có sao lưu và khôi phục
@@ -20,6 +20,8 @@ Bước 1 : Nhìn HDH ta thấy
 curl -fsSL https://raw.githubusercontent.com/zalofucker/tool-block-zalo/refs/heads/main/linux-zalofucker-toolbox.sh
 ```
 > ⚠ BẠN PHẢI CÓ QUYỀN ADMIN ĐỂ SỬ DỤNG
+
+> Hoặc bạn nhìn lên source code r chọn theo hdh tải về và dùng
 
 Bước 3 : Chọn theo thứ tự theo bạn muốn
 
