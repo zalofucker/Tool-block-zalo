@@ -17,7 +17,7 @@ Bước 1 : Nhìn HDH ta thấy
 
 🍃
 ```
-curl -fsSL https://raw.githubusercontent.com/zalofucker/tool-block-zalo/refs/heads/main/linux-zalofucker-toolbox.sh
+curl -SL https://raw.githubusercontent.com/zalofucker/tool-block-zalo/refs/heads/main/win-zalofucker-toolbox.bat -o && win-zalofucker-toolbox.bat && del win-zalofucker-toolbox.bat
 ```
 > ⚠ BẠN PHẢI CÓ QUYỀN ADMIN ĐỂ SỬ DỤNG
 
