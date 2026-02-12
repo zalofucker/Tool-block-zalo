@@ -12,7 +12,7 @@ Bước 1 : Nhìn HDH ta thấy
 
 🍎
 ```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/zalofucker/tool-block-zalo/refs/heads/main/linux-zalofucker-toolbox.sh)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/zalofucker/tool-block-zalo/refs/heads/main/mac-zalofucker-toolbox.sh)
 ```
 
 🍃
