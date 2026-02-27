@@ -7,17 +7,17 @@ Bước 1 : Nhìn HDH ta thấy
 
 🐧 
 ```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/zalofucker/tool-block-zalo/refs/heads/main/linux-zalofucker-toolbox.sh)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/zalofucker/tool-block-zalo/refs/heads/main/linux-zalofucker-toolbox.sh)"
 ```
 
 🍎
 ```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/zalofucker/tool-block-zalo/refs/heads/main/mac-zalofucker-toolbox.sh)
+curl -fsSL https://raw.githubusercontent.com/zalofucker/tool-block-zalo/refs/heads/main/mac-zalofucker-toolbox.sh | sudo bash
 ```
 
 🍃
 ```
-curl -SL https://raw.githubusercontent.com/zalofucker/tool-block-zalo/refs/heads/main/win-zalofucker-toolbox.bat -o win-zalofucker-toolbox.bat && win-zalofucker-toolbox.bat && del win-zalofucker-toolbox.bat
+curl -fsSL https://raw.githubusercontent.com/zalofucker/tool-block-zalo/refs/heads/main/win-zalofucker-toolbox.bat -o win-zalofucker-toolbox.bat && win-zalofucker-toolbox.bat && del win-zalofucker-toolbox.bat
 ```
 > ⚠ BẠN PHẢI CÓ QUYỀN ADMIN ĐỂ SỬ DỤNG
 
