@@ -1,6 +1,7 @@
 @echo off
 chcp 65001 >nul
 color 0B
+setlocal enabledelayedexpansion
 title Zalofucker Toolbox version 0.0.5
 
 net session >nul 2>&1
@@ -387,7 +388,6 @@ if /i "%openhelp%"=="Y" (
     echo Đã mở trang hỗ trợ trong trình duyệt!
 )
 exit /b
-
 :CHECK_PING
 cls
 echo ========================================================
@@ -403,68 +403,68 @@ set "BLOCKED_LIST="
 set "UNBLOCKED_LIST="
 
 :: Kiểm tra Zalo
-echo [1/5] Kiểm tra Zalo (zalo.me)...
+echo [1/5] Kiểm tra Zalo...
 ping -n 1 -w 1000 zalo.me >nul 2>&1
 if %errorLevel% neq 0 (
     echo       [✓] Zalo đã được chặn
     set /a BLOCKED_COUNT+=1
-    set "BLOCKED_LIST=!BLOCKED_LIST! Zalo (zalo.me),"
+    set "BLOCKED_LIST=!BLOCKED_LIST! Zalo,"
 ) else (
     echo       [✗] Zalo CHƯA được chặn
     set /a UNBLOCKED_COUNT+=1
-    set "UNBLOCKED_LIST=!UNBLOCKED_LIST! Zalo (zalo.me),"
+    set "UNBLOCKED_LIST=!UNBLOCKED_LIST! Zalo,"
 )
 
 :: Kiểm tra ZaloPay
-echo [2/5] Kiểm tra ZaloPay (zalopay.vn)...
+echo [2/5] Kiểm tra ZaloPay...
 ping -n 1 -w 1000 zalopay.vn >nul 2>&1
 if %errorLevel% neq 0 (
     echo       [✓] ZaloPay đã được chặn
     set /a BLOCKED_COUNT+=1
-    set "BLOCKED_LIST=!BLOCKED_LIST! ZaloPay (zalopay.vn),"
+    set "BLOCKED_LIST=!BLOCKED_LIST! ZaloPay,"
 ) else (
     echo       [✗] ZaloPay CHƯA được chặn
     set /a UNBLOCKED_COUNT+=1
-    set "UNBLOCKED_LIST=!UNBLOCKED_LIST! ZaloPay (zalopay.vn),"
+    set "UNBLOCKED_LIST=!UNBLOCKED_LIST! ZaloPay,"
 )
 
 :: Kiểm tra ZingMP3
-echo [3/5] Kiểm tra ZingMP3 (zingmp3.vn)...
+echo [3/5] Kiểm tra ZingMP3...
 ping -n 1 -w 1000 zingmp3.vn >nul 2>&1
 if %errorLevel% neq 0 (
     echo       [✓] ZingMP3 đã được chặn
     set /a BLOCKED_COUNT+=1
-    set "BLOCKED_LIST=!BLOCKED_LIST! ZingMP3 (zingmp3.vn),"
+    set "BLOCKED_LIST=!BLOCKED_LIST! ZingMP3,"
 ) else (
     echo       [✗] ZingMP3 CHƯA được chặn
     set /a UNBLOCKED_COUNT+=1
-    set "UNBLOCKED_LIST=!UNBLOCKED_LIST! ZingMP3 (zingmp3.vn),"
+    set "UNBLOCKED_LIST=!UNBLOCKED_LIST! ZingMP3,"
 )
 
 :: Kiểm tra Kiki
-echo [4/5] Kiểm tra Kiki (kiki.zalo.ai)...
+echo [4/5] Kiểm tra Kiki...
 ping -n 1 -w 1000 kiki.zalo.ai >nul 2>&1
 if %errorLevel% neq 0 (
     echo       [✓] Kiki đã được chặn
     set /a BLOCKED_COUNT+=1
-    set "BLOCKED_LIST=!BLOCKED_LIST! Kiki (kiki.zalo.ai),"
+    set "BLOCKED_LIST=!BLOCKED_LIST! Kiki,"
 ) else (
     echo       [✗] Kiki CHƯA được chặn
     set /a UNBLOCKED_COUNT+=1
-    set "UNBLOCKED_LIST=!UNBLOCKED_LIST! Kiki (kiki.zalo.ai),"
+    set "UNBLOCKED_LIST=!UNBLOCKED_LIST! Kiki,"
 )
 
 :: Kiểm tra Labankey
-echo [5/5] Kiểm tra Labankey (labankey.com)...
+echo [5/5] Kiểm tra Labankey...
 ping -n 1 -w 1000 labankey.com >nul 2>&1
 if %errorLevel% neq 0 (
     echo       [✓] Labankey đã được chặn
     set /a BLOCKED_COUNT+=1
-    set "BLOCKED_LIST=!BLOCKED_LIST! Labankey (labankey.com),"
+    set "BLOCKED_LIST=!BLOCKED_LIST! Labankey,"
 ) else (
     echo       [✗] Labankey CHƯA được chặn
     set /a UNBLOCKED_COUNT+=1
-    set "UNBLOCKED_LIST=!UNBLOCKED_LIST! Labankey (labankey.com),"
+    set "UNBLOCKED_LIST=!UNBLOCKED_LIST! Labankey,"
 )
 
 echo.
@@ -473,16 +473,17 @@ echo              KẾT QUẢ KIỂM TRA
 echo ========================================================
 echo.
 echo Đã chặn: %BLOCKED_COUNT%/5
-if %BLOCKED_LIST% neq "" (
-    echo   + %BLOCKED_LIST:~0,-1%
+if !BLOCKED_LIST! neq "" (
+    echo   + !BLOCKED_LIST:~0,-1!
 )
 echo.
 echo Chưa chặn: %UNBLOCKED_COUNT%/5
-if %UNBLOCKED_LIST% neq "" (
-    echo   - %UNBLOCKED_LIST:~0,-1%
+if !UNBLOCKED_LIST! neq "" (
+    echo   - !UNBLOCKED_LIST:~0,-1!
 )
 echo.
 goto END_OPERATION
+
 
 :END_OPERATION
 echo.
