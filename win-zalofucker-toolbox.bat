@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 >nul
 color 0B
-title Zalofucker Toolbox version 0.0.4
+title Zalofucker Toolbox version 0.0.5
 
 net session >nul 2>&1
 if %errorLevel% neq 0 (
