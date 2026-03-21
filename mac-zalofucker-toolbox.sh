@@ -20,7 +20,7 @@ show_banner() {
     echo "========================================================"
     echo "           Zalofucker Toolbox"
     echo "========================================================"
-    echo "Version 0.0.4"
+    echo "Version 0.0.5"
     echo -e "${NC}"
 }
 
@@ -32,7 +32,7 @@ show_menu() {
     echo "4. Chặn Kiki"
     echo "5. Chặn Labankey"
     echo "6. Chặn TẤT CẢ"
-    echo "7. Khôi phục file hosts cũ"
+    echo "7. Gỡ chặn (Khôi phục hosts về mặc định)"
     echo "8. Mở file hosts"
     echo "9. Kiểm tra trạng thái chặn"
     echo "0. Thoát"
@@ -82,7 +82,7 @@ download_filter() {
         echo ""
         echo "  ► Bước 1: Kiểm tra kết nối Internet"
         echo "     - Mở trình duyệt và thử truy cập: https://githubstatus.com kiểm tra xem có đang sập không"
-        echo "     - Hoặc ping: ping -c 3 1.1.1.1"
+        echo "     - Hoặc ping: ping -c 3 9.9.9.9"
         echo ""
         echo "  ► Bước 2: Kiểm tra curl có hoạt động không"
         echo "     - Mở Terminal và gõ: curl --version"
