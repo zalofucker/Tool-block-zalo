@@ -20,7 +20,7 @@ show_banner() {
     echo "========================================================"
     echo "                     Zalofucker Toolbox "
     echo "========================================================"
-    echo "Version 0.0.4"
+    echo "Version 0.0.5"
     echo -e "${NC}"
 }
 
@@ -32,7 +32,7 @@ show_menu() {
     echo "4. Chặn Kiki"
     echo "5. Chặn Labankey"
     echo "6. Chặn TẤT CẢ"
-    echo "7. Khôi phục file hosts cũ"
+    echo "7. Bỏ chặn (khôi phục hosts về mặc định)"
     echo "8. Mở file hosts"
     echo "9. Kiểm tra trạng thái chặn"
     echo "0. Thoát"
