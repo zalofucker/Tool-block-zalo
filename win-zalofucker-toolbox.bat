@@ -9,18 +9,25 @@ if %errorLevel% neq 0 (
     echo  CẢNH BÁO: Cần quyền Administrator!
     echo ================================================
     echo.
-    echo Vui lòng chạy file này với quyền Administrator
-    echo Nhấn phím bất kỳ để thoát...
-    pause >nul
-    exit
+    set /p choice="Bạn có muốn cấp quyền Administrator không? (Y/N): "
+    if /i "!choice!"=="Y" (
+        echo Đang cấp quyền Admin...
+        powershell -Command "Start-Process cmd -ArgumentList '/c \"%~f0\"' -Verb RunAs"
+        exit
+    ) else (
+        echo Chịu...
+        pause >nul
+        exit
+    )
 )
+
 
 :MENU
 cls
 echo ========================================================
 echo            Zalofucker Toolbox
 echo ========================================================
-echo Version 0.0.4
+echo Version 0.0.5
 echo.
 echo  [1] Chặn Zalo
 echo  [2] Chặn ZaloPay
