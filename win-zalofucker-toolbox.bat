@@ -473,12 +473,12 @@ echo              KẾT QUẢ KIỂM TRA
 echo ========================================================
 echo.
 echo Đã chặn: %BLOCKED_COUNT%/5
-if %BLOCKED_COUNT% gtr 0 (
+if %BLOCKED_COUNT% neq "" (
     echo   + %BLOCKED_LIST:~0,-1%
 )
 echo.
 echo Chưa chặn: %UNBLOCKED_COUNT%/5
-if %UNBLOCKED_COUNT% gtr 0 (
+if %UNBLOCKED_COUNT% neq "" (
     echo   - %UNBLOCKED_LIST:~0,-1%
 )
 echo.
