@@ -41,7 +41,7 @@ echo  [9] Kiểm tra trạng thái chặn
 echo  [0] Thoát
 echo.
 echo ========================================================
-set /p choice="Nhập lựa chọn của bạn (0-8): "
+set /p choice="Nhập lựa chọn của bạn (0-9): "
 
 if "%choice%"=="1" goto BLOCK_ZALO
 if "%choice%"=="2" goto BLOCK_ZALOPAY
