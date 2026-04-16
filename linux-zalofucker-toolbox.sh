@@ -418,6 +418,7 @@ check_sudo() {
             echo ""
             echo -e "${CYAN}Đang khởi động lại script với quyền sudo...${NC}"
             echo -e "${CYAN}Vui lòng nhập mật khẩu quản trị (nếu có):${NC}"
+            echo -e "${CYAN}Bạn có thể cần chạy lại dòng lệnh nếu bạn đang dùng phiên bản Online:${NC}"
             echo ""
 
             sudo "$0" "$@"
@@ -482,7 +483,7 @@ main() {
                 ;;
         esac
         
-        echo ""
+        echo " "
         echo -n "Nhấn Enter để tiếp tục..."
         read
     done
